@@ -1,0 +1,20 @@
+import math
+
+def factor_rsa_number(n):
+    factors = []
+    for i in range(2, int(math.sqrt(n)) + 1):
+        while n % i == 0:
+            factors.append(i)
+            n //= i
+    if n > 1:
+        factors.append(n)
+    return factors
+
+# Example usage
+n = 123456789
+prime_factors = factor_rsa_number(n)
+if len(prime_factors) == 2:
+    p, q = prime_factors
+    print(f"The prime factors of {n} are: p = {p}, q = {q}")
+else:
+    print("Unable to find prime factors.")
